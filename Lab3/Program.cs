@@ -13,6 +13,7 @@ namespace Lab3
 
             string letsPlay;
             string name;
+            int answer;
             do
             {
                 Console.WriteLine("What is your name?");
@@ -24,10 +25,26 @@ namespace Lab3
                 while ((letsPlay == "y") || (letsPlay == "yes"))
                 {
 
-                    Console.WriteLine("Please choose a number between 1 and 100.");
-                    int answer = int.Parse(Console.ReadLine());
+                    while (true)
+                    {
 
-                    if (answer <= 0)
+                        try
+                        {
+                            Console.WriteLine("Please choose a number between 1 and 100.");
+                            answer = int.Parse(Console.ReadLine());
+                            break;
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Format error");
+                        }
+                        catch (Exception f)
+                        {
+                            Console.WriteLine(f.Message);
+                        }
+                    }
+
+                    if ((answer <= 0) || (answer >= 101))
                     {
                         Console.WriteLine("Please choose a positive number between 1 and 100.");
                     }
